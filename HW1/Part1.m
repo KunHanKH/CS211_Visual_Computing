@@ -1,3 +1,4 @@
+
 % 1. prepare image
 img = imread("./img-gallery/CARTOON.jpg");
 img = imresize(img, [256, 256]);

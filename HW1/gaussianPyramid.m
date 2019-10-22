@@ -11,7 +11,7 @@ level = 1;
 while(loop_num >= level)
     
     % get the filtered image
-    filtered_img = imfilter(filtered_img, filter, 'same');
+    filtered_img = imfilter(filtered_img, filter, 'replicate', 'same');
     % sample image every two pixels
     filtered_img = filtered_img(sample_vector, sample_vector);
     

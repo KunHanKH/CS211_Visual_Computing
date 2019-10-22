@@ -4,7 +4,8 @@ function displayPyramid(img,pyramid)
 loop_num = log2(256);
 for(i = 1:loop_num)
     display(i)
-    imshowpair(img, pyramid{1, i}, 'montage')
+    % imshowpair(img, pyramid{1, i}, 'montage')
+    imshow(pyramid{1, i})
     pause
 end
 end
