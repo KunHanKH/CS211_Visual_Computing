@@ -1,17 +1,15 @@
-% 1. prepare image
-img = imread("./img-gallery/CARTOON.jpg");
-img = imresize(img, [256, 256]);
-img = im2double(img);
-% 2. prepare filter
-filter = [1/4, 1/4; 1/4, 1/4];
-
+function laplacian_pyramid = laplacianPyramid(img, filter)
+%UNTITLED8 Summary of this function goes here
+%   Detailed explanation goes here
 sample_vector = [1:2:256];
 maxSize = 256;
 
-loop_num = log2(256);
 filtered_img = img;
 prev_img = img;
-while(loop_num > 0)
+
+loop_num = log2(256);
+level = 1;
+while(loop_num >= level)
     
     % get the filtered image
     filtered_img = imfilter(filtered_img, filter, 'same');
@@ -30,14 +28,16 @@ while(loop_num > 0)
     % process the negative pixel value
     % la_img  = la_img - min(la_img, [], 'all');
     
+    % store the result in cell gaussian_pyramid
+    laplacian_pyramid{1, level} = la_img;
+    
     % update loop_num
-    loop_num = loop_num - 1;
-    imshowpair(img, la_img, 'montage')
-    pause
+    level = level + 1;
     
     % prepare new sample vector
     maxSize = maxSize / 2;
+    sample_vector = [1:2:maxSize];
     prev_img = resized_img;
 end
+end
 
-    
