@@ -67,4 +67,4 @@ gauss_filter = fspecial('gaussian', 3, 0.7);
 img_gaussian = conv2(img, gauss_filter);
 imshowpair(img_filter_3, img_gaussian, 'montage')
 
-display("imfilter uses correlation to filter images by default that starts from one side of the image, whereas covolution starts from the other, so there may be some small differences in the filter output.")
+DISP("imfilter uses correlation to filter images by default that starts from one side of the image, whereas covolution starts from the other, so there may be some small differences in the filter output.")
