@@ -2,7 +2,7 @@ function [filteredImg] = notchfilter(img, lower_threshold, upper_threshold, rang
 Y_1 = fft2(img);
 
 Y_2 = fftshift(Y_1);
-magnitude = abs(Y_2);
+magnitude = log(abs(Y_2));
 
 figure
 imshow(img);
