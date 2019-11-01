@@ -1,15 +1,16 @@
 function [filteredImg] = notchfilter(img, lower_threshold, upper_threshold, range)
 Y_1 = fft2(img);
-
 Y_2 = fftshift(Y_1);
 magnitude = log(abs(Y_2));
 
 figure
+
+subplot(2, 2, 1);
 imshow(img);
 title("original img");
 
-figure
-imshow(magnitude);
+subplot(2, 2, 2);
+imshow(real(magnitude), []);
 title("magnitude before nocth filter");
 
 [M, N] = size(img);
@@ -24,13 +25,13 @@ for i = 1:M
     end
 end
 
-figure
-imshow(magnitude);
+subplot(2, 2, 3);
+imshow(real(magnitude), []);
 title("magnitude after notch filter");
 Y = ifftshift(Y_2);
 filteredImg = abs(ifft2(Y));
-figure;
-imshow(filteredImg);
+subplot(2, 2, 4);
+imshow(filteredImg, []);
 title("filtered Img");
 end
 
