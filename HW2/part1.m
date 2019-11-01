@@ -10,26 +10,30 @@ for i = 1: size_of_image
         img(i, j) = sin(0.2*i) + sin(0.3*i) + cos(0.4*i) + sin(sqrt(i*i+j*j)*0.15) + sin(sqrt(i*i+j*j)*0.35);
     end
 end
+
 figure
+subplot(2, 2, 1);
 imshow(img)
 title("img");
-
 
 % Step3: Compute the Discrete Fourier Transform of this image.
 Y_1 = fft2(img);
 Y_2 =fftshift(Y_1);
 magnitude = abs(Y_2);
 phase = angle(Y_2);
-figure
+
+subplot(2, 2, 2);
 imshow(log(magnitude),[]);
 title("log magnitude");
-figure
+
+subplot(2, 2, 3);
 imshow(unwrap(phase), []);
 title("phase");
 
 Y = Y_1*sqrt(2);
 X = ifft2(Y);
-figure
+
+subplot(2, 2, 4);
 imshow(X);
 title("img with 2 times multitude");
 pause
@@ -37,6 +41,7 @@ pause
 %% b Show the Discrete Fourier Transform of the following image and explain the pattern in the result in your pdf file. 
 cross = rgb2gray(im2double(imread("./img-gallery/Cross.jpg")));
 figure
+subplot(1, 3, 1);
 imshow(cross);
 title("cross");
 
@@ -44,10 +49,10 @@ Y = fft2(cross);
 Y = fftshift(Y);
 magnitude = abs(Y);
 phase = angle(Y);
-figure
+subplot(1, 3, 2);
 imshow(log(magnitude), []);
 title("magnitude");
-figure
+subplot(1, 3, 3);
 imshow(unwrap(phase), []);
 title("phase");
 pause
